@@ -1,3 +1,14 @@
+.game-form-container {
+  max-width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+  
+  // For tablets and larger screens
+  @media (min-width: 768px) {
+    max-width: 600px;
+  }
+}
+
 .game-form {
   max-width: 600px;
   margin: 2rem auto;
@@ -15,10 +26,17 @@
   }
 
   .player-form {
-    margin-bottom: 1.5rem;
+    margin-bottom: 16px;
     
-    &:last-child {
-      margin-bottom: 0;
+    // Stack elements vertically on mobile
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    // For tablets and larger screens
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
     }
   }
 
@@ -27,27 +45,37 @@
   }
 
   .score-entry {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .form-actions {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-
-    button {
-      min-width: 120px;
+    width: 100%;
+    
+    .score-input {
+      font-size: 16px; // Prevents iOS zoom on focus
     }
   }
 
-  mat-form-field {
-    margin-bottom: 1rem;
+  // Improve button spacing and size
+  .form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    
+    // Stack buttons vertically on very small screens
+    @media (max-width: 360px) {
+      flex-direction: column;
+    }
+    
+    button {
+      flex: 1;
+      min-height: 44px; // Better touch target size
+    }
+  }
 
-    &:last-child {
-      margin-bottom: 0;
+  // Improve form field appearance
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 8px;
+    
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0;
     }
   }
 

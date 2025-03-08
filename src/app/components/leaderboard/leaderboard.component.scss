@@ -61,4 +61,50 @@ table {
 .mat-row:nth-child(3) {
   background: rgba(205, 127, 50, 0.1);
   .mat-cell { font-weight: 500; }
+}
+
+.leaderboard-container {
+  padding: 16px;
+  max-width: 100%;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    max-width: 800px;
+  }
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; // Allow horizontal scroll on small screens
+  margin-top: 16px;
+  
+  table {
+    width: 100%;
+    min-width: 300px; // Minimum width before scrolling
+    
+    th, td {
+      padding: 12px 8px;
+      font-size: 14px;
+      
+      @media (min-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+  
+  // Stack buttons vertically on very small screens
+  @media (max-width: 360px) {
+    flex-direction: column;
+  }
+  
+  button {
+    flex: 1;
+    min-height: 44px;
+  }
 } 

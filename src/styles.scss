@@ -1,13 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 
-html, body { 
-  height: 100%; 
+html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-body { 
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
               url('/assets/bg-image.png') no-repeat center center fixed;
   background-size: cover;
@@ -127,5 +133,61 @@ input.mat-mdc-input-element {
   .mat-mdc-input-element {
     -webkit-text-fill-color: black !important;
     color: black !important;
+  }
+}
+
+// Improve touch targets
+button {
+  min-height: 44px;
+  padding: 8px 16px;
+  
+  &.mat-button,
+  &.mat-raised-button,
+  &.mat-flat-button {
+    min-height: 44px;
+  }
+}
+
+// Responsive container
+.container {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    max-width: 800px;
+  }
+}
+
+// Improve form field spacing
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+// Better table responsiveness
+.mat-table {
+  width: 100%;
+  
+  @media (max-width: 600px) {
+    .mat-header-row {
+      display: none;
+    }
+    
+    .mat-row {
+      flex-direction: column;
+      padding: 8px 16px;
+      
+      .mat-cell {
+        padding: 4px 0;
+        
+        &:before {
+          content: attr(data-label);
+          font-weight: bold;
+          margin-right: 8px;
+        }
+      }
+    }
   }
 }
