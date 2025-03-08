@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
 html, body { 
   height: 100%; 
@@ -14,7 +15,8 @@ body {
   min-height: 100vh;
 }
 
-.mat-card {
+// Material overrides
+.mat-mdc-card {
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(10px);
   color: #000;
@@ -22,12 +24,108 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-.mat-toolbar {
+// Form field styles
+.mat-mdc-form-field {
+  background-color: white !important;
+  border-radius: 4px;
+
+  .mdc-text-field {
+    background-color: white !important;
+  }
+
+  .mdc-text-field--outlined {
+    background-color: white !important;
+  }
+
+  .mat-mdc-form-field-focus-overlay {
+    background-color: white !important;
+  }
+
+  // Input text color
+  .mat-mdc-input-element {
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+  }
+
+  // Text input specific
+  input[type="text"] {
+    color: black !important;
+  }
+
+  // Number input specific
+  input[type="number"] {
+    color: black !important;
+  }
+
+  // Label color
+  .mat-mdc-floating-label {
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+
+  &.mat-focused {
+    .mat-mdc-floating-label {
+      color: #1a4f8b !important;
+    }
+  }
+}
+
+// Button styles
+.mat-mdc-raised-button.mat-primary {
+  background-color: #1a4f8b !important;
+}
+
+// Toolbar styles
+.mat-mdc-toolbar {
   background: rgba(31, 41, 55, 0.95) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.mat-raised-button.mat-primary {
-  background: #1a4f8b !important;
+// Form field outline colors
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.mat-focused {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #1a4f8b !important;
+  }
+}
+
+// Error messages
+.mat-mdc-form-field-error {
+  color: #f44336 !important;
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+}
+
+// Force black text for all inputs
+.mdc-text-field__input,
+.mat-mdc-input-element,
+input.mat-mdc-input-element {
+  -webkit-text-fill-color: black !important;
+  color: black !important;
+}
+
+// Style for caret color
+.mat-mdc-form-field .mat-mdc-input-element {
+  caret-color: black;
+}
+
+// Override MDC text field styles
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  -webkit-text-fill-color: black !important;
+  color: black !important;
+}
+
+// Override for outlined fields
+.mat-mdc-form-field-appearance-outline {
+  .mat-mdc-input-element {
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+  }
 }

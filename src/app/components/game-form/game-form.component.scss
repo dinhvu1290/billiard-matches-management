@@ -1,64 +1,123 @@
 .game-form {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  h2, h3 {
-    margin-bottom: 20px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  h2 {
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
   }
 
-  mat-card {
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  .player-form {
+    margin-bottom: 1.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  .form-section {
-    margin-bottom: 20px;
+  .full-width {
+    width: 100%;
   }
 
-  .players-section {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .player-row {
+  .score-entry {
     display: flex;
     align-items: center;
-    gap: 16px;
-
-    mat-form-field {
-      flex: 1;
-    }
-
-    .player-name {
-      min-width: 120px;
-      font-weight: 500;
-    }
+    gap: 1rem;
   }
 
-  .add-player-section {
+  .form-actions {
+    margin-top: 2rem;
     display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 24px;
-
-    mat-form-field {
-      flex: 1;
-    }
-  }
-
-  .actions {
-    display: flex;
-    gap: 8px;
     justify-content: flex-end;
-    margin-top: 24px;
+    gap: 1rem;
 
     button {
-      min-width: 100px;
+      min-width: 120px;
+    }
+  }
+
+  mat-form-field {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Override Material form field styles
+  ::ng-deep {
+    // Base styles for form field
+    .mat-mdc-form-field {
+      background-color: white;
+      border-radius: 4px;
+
+      .mdc-text-field--outlined {
+        background-color: white;
+      }
+    }
+
+    // Input text colors
+    .player-name-input {
+      -webkit-text-fill-color: black !important;
+      color: black !important;
+    }
+
+    .number-input {
+      -webkit-text-fill-color: black !important;
+      color: black !important;
+    }
+
+    .score-input {
+      -webkit-text-fill-color: black !important;
+      color: black !important;
+    }
+
+    // Style for outline
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(0, 0, 0, 0.3) !important;
+    }
+
+    // Style for label
+    .mat-mdc-floating-label {
+      color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    // Style for focused state
+    .mat-focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #1a4f8b !important;
+      }
+
+      .mat-mdc-floating-label {
+        color: #1a4f8b !important;
+      }
+    }
+
+    // Force black text for all inputs
+    .mdc-text-field__input {
+      -webkit-text-fill-color: black !important;
+      color: black !important;
+    }
+
+    input.mat-mdc-input-element {
+      -webkit-text-fill-color: black !important;
+      color: black !important;
+    }
+
+    // Style for caret color
+    .mat-mdc-form-field .mat-mdc-input-element {
+      caret-color: black;
     }
   }
 } 
