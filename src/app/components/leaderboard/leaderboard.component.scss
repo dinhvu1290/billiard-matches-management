@@ -1,0 +1,64 @@
+.leaderboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h2 {
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+mat-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-cell {
+  font-size: 14px;
+}
+
+.no-players {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+// Highlight top 3 players
+.mat-row:nth-child(1) {
+  background: rgba(255, 215, 0, 0.1);
+  .mat-cell { font-weight: 500; }
+}
+
+.mat-row:nth-child(2) {
+  background: rgba(192, 192, 192, 0.1);
+  .mat-cell { font-weight: 500; }
+}
+
+.mat-row:nth-child(3) {
+  background: rgba(205, 127, 50, 0.1);
+  .mat-cell { font-weight: 500; }
+} 

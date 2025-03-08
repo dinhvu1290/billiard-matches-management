@@ -1,0 +1,66 @@
+<div class="game-form">
+  <h2>New Match</h2>
+
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="gameForm">
+        <!-- Step 1: Enter player names -->
+        <div *ngIf="!isEnteringScores">
+          <div class="form-section">
+            <mat-form-field>
+              <mat-label>Number of Players</mat-label>
+              <input matInput type="number" [(ngModel)]="numberOfPlayers" 
+                     [ngModelOptions]="{standalone: true}"
+                     (ngModelChange)="updateForm()"
+                     min="2" max="8">
+            </mat-form-field>
+          </div>
+
+          <div class="players-section" formArrayName="players">
+            <div *ngFor="let player of players.controls; let i = index" [formGroupName]="i" class="player-row">
+              <mat-form-field>
+                <mat-label>Player {{i + 1}} Name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error *ngIf="player.get('name')?.hasError('required')">
+                  Player name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button mat-raised-button color="primary" (click)="onNextStep()" [disabled]="!gameForm.valid">
+              Next
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Enter scores -->
+        <div *ngIf="isEnteringScores">
+          <h3>Enter Scores</h3>
+          <div class="players-section" formArrayName="players">
+            <div *ngFor="let player of players.controls; let i = index" [formGroupName]="i" class="player-row">
+              <div class="player-name">{{player.get('name')?.value}}</div>
+              <mat-form-field>
+                <mat-label>Score for {{player.get('name')?.value}}</mat-label>
+                <input matInput type="number" formControlName="points" required>
+                <mat-error *ngIf="player.get('points')?.hasError('required')">
+                  Score is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button mat-button (click)="isEnteringScores = false">
+              Back
+            </button>
+            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!gameForm.valid">
+              End Match
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div> 

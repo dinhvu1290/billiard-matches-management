@@ -1,0 +1,29 @@
+<div class="game-list">
+  <h2>Match History</h2>
+  
+  <mat-card *ngFor="let match of matches" class="match-card">
+    <mat-card-header>
+      <mat-card-title>Match on {{ match.date | date:'medium' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="match.players">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Player</th>
+          <td mat-cell *matCellDef="let player">{{ player.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef>Score</th>
+          <td mat-cell *matCellDef="let player">{{ getPlayerScore(match, player.id) }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="matches.length === 0" class="no-matches">
+    <p>No matches recorded yet.</p>
+  </div>
+</div> 
